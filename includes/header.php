@@ -95,12 +95,12 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Alabah's Music || <?= $title; ?></title>
+    <title>Dope Mind Records || <?= $title; ?></title>
     <meta name="robots" content="index, follow" />
     <meta name="description" content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="Img/logo.png" />
 
     <!-- CSS
     ============================================ -->
@@ -116,6 +116,8 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
     <link rel="stylesheet" href="assets/css/entypo/style.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/Override.css">
+
     <style>
         .cart-list-active {
             background-color: #abd373 !important;
@@ -166,18 +168,18 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
             <div class="header-top bg-pronia-primary d-none d-lg-block">
 
             </div>
-            <div class="header-middle py-30">
+            <div class="header-middle py-0">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-12">
                             <div class="header-middle-wrap position-relative">
                                 <div class="header-contact d-none d-lg-flex">
                                     <i class="pe-7s-call"></i>
-                                    <a href="tel://+00-123-456-789">+00 123 456 789</a>
+                                    <a href="tel://+2348036328814">+234 803 6328 814</a>
                                 </div>
 
-                                <a href="" class="header-logo">
-                                    <img src="assets/images/logo/dark.png" alt="Header Logo">
+                                <a href="" class="header-logo d-flex  justify-content-center align-items-center" style="width: 20vw;">
+                                    <img src="Img/logo.png" alt="Header Logo" class=" w-50 h-50">
                                 </a>
 
                                 <div class="header-right">
@@ -252,9 +254,9 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
                         <div class="row align-items-center justify-content-center">
                             <div class="col-lg-3  col-6">
 
-                                <!-- <a href="" class="header-logo" >
-                                    <img src="assets/images/logo/dark.png" alt="Header Logo" >
-                                </a> -->
+                                <a href="" class="header-logo">
+                                    <img src="Img/logo.png" alt="Header Logo" height="70" width="70">
+                                </a>
 
                             </div>
                             <div class="col-lg-6 d-none d-lg-block">

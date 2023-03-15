@@ -44,11 +44,11 @@ if (isset($_GET["reference"])) {
 
 function sendEmailToUser($email, $conn, $reference)
 {
-  $query = "SELECT user_id FROM add_user WHERE email='$email'";
+  $query = "SELECT * FROM add_user WHERE email='$email'";
   $result = mysqli_query($conn, $query);
   $row = mysqli_fetch_assoc($result);
   $userid = $row["user_id"];
-
+  $fullname = $row["fullname"];
   $query = "SELECT * FROM add_cart WHERE user_id='$userid'";
   $result = mysqli_query($conn, $query);
   $arr = [
@@ -119,7 +119,7 @@ function sendEmailToUser($email, $conn, $reference)
   }
 
 
-  saveSold($arr["name"], $email, $arr["amount"], $arr["type"], $arr["leaseType"], $conn, $reference, $arr["id"], $arr["image"], $arr["file"]);
+  saveSold($arr["name"], $email, $arr["amount"], $arr["type"], $arr["leaseType"], $conn, $reference, $arr["id"], $arr["file"], $arr["image"], ["userid" => $userid, "fullname" => $fullname]);
   changePremiumItemsToSold($conn, $arr["id"], $arr["type"], $arr["leaseType"]);
 }
 
@@ -129,7 +129,7 @@ function getFiles($conn, $table, $id, $idValue)
   $result = mysqli_query($conn, $query);
   return $result;
 }
-function saveSold($itemname, $user, $amount, $itemtype, $itemLeaseType, $conn, $reference, $ids, $images, $files)
+function saveSold($itemname, $user, $amount, $itemtype, $itemLeaseType, $conn, $reference, $ids, $files, $image, $userDetails)
 {
   $date = date("d-M-Y");
 
@@ -143,20 +143,23 @@ function saveSold($itemname, $user, $amount, $itemtype, $itemLeaseType, $conn, $
   $query = "INSERT INTO `view_sold`( `item_id`,`item_name`, `sold_to`, `amount_sold`, `date_sold`, `item_type`,`item_lease_type`,`reference_id`,`files`) VALUES ('$filesIDs','$itemname','$user','$amount','$date','$itemtype','$itemLeaseType','$reference','$files')";
   $result = mysqli_query($conn, $query);
   if ($result) {
-    sendEmail($user, $ids, $conn, $reference);
+    sendEmail($user, $ids, $conn, $image, $userDetails, $reference);
   }
 }
 
 
 
-function sendEmail($email, $ids, $conn)
+function sendEmail($email, $ids, $conn, $image, $userDetails, $reference)
 {
+  $firstname = explode(" ", $userDetails["fullname"])[0];
+
   $senderemail = "alabahmusic@gmail.com";
   $senderpassword = "vqfrqkykxfnxxqeb";
-  $senderFrom = "Dopemind Mind Ent.";
+  $senderFrom = "Dopemind Mind Records";
   $body = file_get_contents("./emailtouser.html");
-  $body = str_replace([], [], $body);
+  $body = str_replace(["{Firstname}", "{Link}", "{Image}"], [$firstname, "https://alabah.com/download.php?reference=$reference", $image[0]], $body);
   $subject = "You've successfully purchased your items";
+
   $mail = new PHPMailer(true);
   //Server settings
 
