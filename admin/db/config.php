@@ -1,8 +1,15 @@
 <?php
 
-define('HOST', 'localhost');
-define('USER', 'root');
-define('PASSWORD', '');
-define('DB', 'alabah_db');
-$conn=mysqli_connect(HOST,USER,PASSWORD,DB);
-
+$mode="pro";
+if ($mode=="dev") {
+    define('HOST', 'localhost');
+    define('USER', 'root');
+    define('PASSWORD', '');
+    define('DB', 'alabah_db');
+} else {
+    define('HOST', 'localhost');
+    define('USER', 'dopegztz_root');
+    define('PASSWORD', 'EPfHtFtgyiAH');
+    define('DB', 'dopegztz_');
+}
+$conn=mysqli_connect(HOST, USER, PASSWORD, DB);

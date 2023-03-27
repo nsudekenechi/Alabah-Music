@@ -1,9 +1,12 @@
  <!-- Begin Modal Area -->
- <div class="modal quick-view-modal fade" id="quickModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="quickModal" aria-hidden="true">
+ <div class="modal quick-view-modal fade" id="quickModal" data-bs-backdrop="static" data-bs-keyboard="false"
+     tabindex="-1" aria-labelledby="quickModal" aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
              <div class="modal-header">
-                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-tippy="Close" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder" id="modal-close">
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-tippy="Close"
+                     data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50"
+                     data-tippy-arrow="true" data-tippy-theme="sharpborder" id="modal-close">
                  </button>
              </div>
              <div class="modal-body">
@@ -95,13 +98,17 @@
                              <ul class="quantity-with-btn">
 
                                  <li class="add-to-cart-1">
-                                     <a class="custom-circle-btn" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                     <a class="custom-circle-btn" data-tippy-inertia="true"
+                                         data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                         data-tippy-theme="sharpborder">
                                          <i class="pe-7s-cart"></i>
                                      </a>
                                  </li>
 
                                  <li class="wishlist-btn-wrap">
-                                     <a class="custom-circle-btn" data-tippy="Purchase Item" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder" href="./checkout.php">
+                                     <a class="custom-circle-btn" data-tippy="Purchase Item" data-tippy-inertia="true"
+                                         data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                         data-tippy-theme="sharpborder" href="./checkout.php">
                                          <i class="pe-7s-shopbag"></i>
                                      </a>
                                  </li>
@@ -125,35 +132,46 @@
                  <div class="col-lg-6">
                      <div class="footer-widget-item col-lg-6">
                          <div class="footer-widget-logo">
-                             <a href="">
-                                 <img src="assets/images/logo/dark.png" alt="Logo">
+                             <a href="./index.php">
+                                 <img src="./Img/logo.png" width="100" alt="Logo">
+
+                                 <!-- <img src="assets/images/logo/dark.png" alt="Logo"> -->
                              </a>
                          </div>
-                         <p class="footer-widget-desc">Music reminds us of our past, drives us forward and inspires us to live beyond limits.
+                         <p class="footer-widget-desc">Music reminds us of our past, drives us forward and inspires us
+                             to live beyond limits.
                              <br>
-                             Here at Alabah's music we create the perfect sounds that helps you find the inner you.
+                             Here at Dopemind Studios we create the perfect sounds that helps you find the inner you.
                          </p>
 
                          <h3 class="footer-widget-title">Connect with us on:</h3>
                          <div class="social-link with-border">
                              <ul>
                                  <li>
-                                     <a href="#" data-tippy="Facebook" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                     <a href="#" data-tippy="Facebook" data-tippy-inertia="true"
+                                         data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                         data-tippy-theme="sharpborder">
                                          <i class="fa fa-facebook"></i>
                                      </a>
                                  </li>
                                  <li>
-                                     <a href="#" data-tippy="Twitter" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                     <a href="#" data-tippy="Twitter" data-tippy-inertia="true"
+                                         data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                         data-tippy-theme="sharpborder">
                                          <i class="fa fa-twitter"></i>
                                      </a>
                                  </li>
                                  <li>
-                                     <a href="#" data-tippy="Whatsapp" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                     <a href="#" data-tippy="Whatsapp" data-tippy-inertia="true"
+                                         data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                         data-tippy-theme="sharpborder">
                                          <i class="fa fa-whatsapp"></i>
                                      </a>
                                  </li>
                                  <li>
-                                     <a href="#" data-tippy="Instagram" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                     <a href="#" data-tippy="Instagram" data-tippy-inertia="true"
+                                         data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                         data-tippy-theme="sharpborder">
                                          <i class="fa fa-instagram"></i>
                                      </a>
                                  </li>
@@ -209,8 +227,8 @@
                  <div class="col-lg-4 pt-40">
                      <div class="footer-contact-info">
                          <h3 class="footer-widget-title">Got Any Question? Call Us</h3>
-                         <a class="number" href="tel://+2349062325092">+234 9062 325092</a>
-
+                         <a class="number" href="tel://+2349164066049">+234 916 406 6049</a>
+                         <a class="number" href="tel://+2348036328814">+234 803 6328 814 </a>
                      </div>
 
                  </div>
@@ -222,7 +240,9 @@
              <div class="row">
                  <div class="col-lg-12">
                      <div class="copyright">
-                         <span class="copyright-text">© <?= date("Y"); ?> Dope Mind Records</i>
+                         <span class="copyright-text">©
+                             <?= date("Y"); ?>
+                             DopeMind Studios</i>
                      </div>
                  </div>
              </div>
@@ -267,4 +287,4 @@
  <script src="./main.js"></script>
  <?php
     require_once("./alert.php");
-    ?>
+                             ?>

@@ -82,18 +82,17 @@ const modalLeaseInfos = {
 
 let name, beatPrice, beatImage, leaseType, id, userId, cartIcon, productItem, productType;
 
-if (!localStorage.getItem("user")) {
-    let rand = Math.floor(Math.random() * 1000);
-    userId = localStorage.setItem("user", "user" + rand);
-    userId = localStorage.getItem("user");
-    saveUserIdToDB(userId);
+// if (!localStorage.getItem("user")) {
+//     let rand = Math.floor(Math.random() * 1000);
+//     userId = localStorage.setItem("user", "user" + rand);
+//     userId = localStorage.getItem("user");
 
-} else {
-    userId = localStorage.getItem("user");
+// } else {
+//     userId = localStorage.getItem("user");
 
-}
+// }
 
-
+userId = document.querySelector("#user").value;
 
 //Playing Multiple beat items
 playIcons.beat.forEach((playIcon, index) => {
@@ -668,10 +667,10 @@ async function removeCartFromDB(id, userId) {
 
 }
 // Saving User details
-async function saveUserIdToDB(userid) {
-    let request = await fetch(`./handler.php?adduser=${userid}`);
+// async function saveUserIdToDB(userid) {
+//     let request = await fetch(`./handler.php?adduser=${userid}`);
 
-}
+// }
 // Updating DB
 async function changingCartItemsInDB([userid, cartid, item_amount, item_lease_type]) {
     let items = JSON.stringify({

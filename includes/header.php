@@ -1,19 +1,24 @@
 <?php
 require_once("./admin/db/config.php");
+if (!isset($_COOKIE["user"])) {
+    $user = "user".rand(0, 1000);
+    $time = strtotime("1 year");
+    setcookie("user", $user, $time, "/");
+    session_start();
+    $_SESSION["user"] = $user;
 
-if (isset($_COOKIE["user"]) || isset($_SESSION["user"])) {
-    if (isset($_COOKIE["user"])) {
-        $user = $_COOKIE["user"];
-    } else {
-        $user = $_SESSION["user"];
-    }
-    $query = "SELECT * FROM add_cart WHERE user_id='$user'";
+    $query = "INSERT INTO `add_user`( `user_id`) VALUES ('$user')";
     $result = mysqli_query($conn, $query);
-    $count = mysqli_num_rows($result);
-} else {
-    $user = "";
-    $count = 0;
 }
+if (isset($_COOKIE["user"])) {
+    $user = $_COOKIE["user"];
+} else {
+    $user = $_SESSION["user"];
+}
+
+$query = "SELECT * FROM add_cart WHERE user_id='$user'";
+$result = mysqli_query($conn, $query);
+$count = mysqli_num_rows($result);
 // Redirecting user if they try to access download page without paying
 if ($title == "Download page") {
     $reference = $_GET["reference"];
@@ -24,7 +29,7 @@ if ($title == "Download page") {
     }
 }
 
-if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page") {
+if ($title != "About us" && $title != "Thank You" && $title != "Contact Us" && $title != "Download page") {
     if ($title != "Home") {
         //    12 Items perpage for webpages that are not home page and 8 Items for Homepage
         $perPage = 12;
@@ -36,16 +41,15 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
             extract($GET);
 
             if ($title == "Beat Store") {
-
                 $countQuery = "SELECT * FROM add_beat WHERE CONCAT (`beat_name`,`beat_category`) REGEXP '$Search'";
                 $itemquery = "SELECT * FROM add_beat WHERE CONCAT (`beat_name`,`beat_category`) REGEXP '$Search' LIMIT $start,$perPage";
-            } else if ($title == "Sample Pack") {
+            } elseif ($title == "Sample Pack") {
                 $countQuery = "SELECT * FROM add_sample WHERE CONCAT (`sample_name`,`sample_category`) REGEXP '$Search'";
                 $itemquery = "SELECT * FROM add_sample WHERE CONCAT (`sample_name`,`sample_category`) REGEXP '$Search' LIMIT $start,$perPage";
-            } else if ($title == "Lyrics Store") {
+            } elseif ($title == "Lyrics Store") {
                 $countQuery = "SELECT * FROM add_lyrics WHERE CONCAT (`lyrics_name`,`lyrics_category`) REGEXP '$Search'";
                 $itemquery = "SELECT * FROM add_lyrics WHERE CONCAT (`lyrics_name`,`lyrics_category`) REGEXP '$Search' LIMIT $start,$perPage";
-            } else if ($title == "Song Hub") {
+            } elseif ($title == "Song Hub") {
                 $countQuery = "SELECT * FROM add_song WHERE CONCAT (`song_name`,`song_category`) REGEXP '$Search'";
                 $itemquery = "SELECT * FROM add_song WHERE CONCAT (`song_name`,`song_category`) REGEXP '$Search' LIMIT $start,$perPage";
             }
@@ -54,13 +58,13 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
             if ($title == "Beat Store") {
                 $countQuery = "SELECT * FROM add_beat";
                 $itemquery = "SELECT * FROM add_beat LIMIT $start,$perPage";
-            } else if ($title == "Sample Pack") {
+            } elseif ($title == "Sample Pack") {
                 $countQuery = "SELECT * FROM add_sample";
                 $itemquery = "SELECT * FROM add_sample LIMIT $start,$perPage";
-            } else if ($title == "Lyrics Store") {
+            } elseif ($title == "Lyrics Store") {
                 $countQuery = "SELECT * FROM add_lyrics ";
                 $itemquery = "SELECT * FROM add_lyrics  LIMIT $start,$perPage";
-            } else if ($title == "Song Hub") {
+            } elseif ($title == "Song Hub") {
                 $countQuery = "SELECT * FROM add_song ";
                 $itemquery = "SELECT * FROM add_song  LIMIT $start,$perPage";
             }
@@ -75,7 +79,6 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
             $nom = mysqli_num_rows($itemresult);
 
             if ($nom != $perPage && $perPage == 1) {
-
                 $itemcount = $total - $nom + $nom;
             } else {
                 $itemcount  = $page * $nom;
@@ -95,9 +98,10 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dope Mind Records || <?= $title; ?></title>
+    <title>DopeMind Studios || <?= $title; ?></title>
     <meta name="robots" content="index, follow" />
-    <meta name="description" content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
+    <meta name="description"
+        content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="Img/logo.png" />
@@ -116,7 +120,7 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
     <link rel="stylesheet" href="assets/css/entypo/style.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/Override.css">
+    <!-- <link rel="stylesheet" href="assets/css/Override.css"> -->
 
     <style>
         .cart-list-active {
@@ -152,7 +156,7 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
 </head>
 
 <body>
-    <div class="preloader-activate preloader-active open_tm_preloader">
+    <!-- <div class="preloader-activate preloader-active open_tm_preloader">
         <div class="preloader-area-wrap">
             <div class="spinner d-flex justify-content-center align-items-center h-100">
                 <div class="bounce1"></div>
@@ -160,9 +164,9 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
                 <div class="bounce3"></div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="main-wrapper">
-
+        <input type="text" value="<?=$user;?>" id="user" hidden>
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
             <div class="header-top bg-pronia-primary d-none d-lg-block">
@@ -178,14 +182,16 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
                                     <a href="tel://+2348036328814">+234 803 6328 814</a>
                                 </div>
 
-                                <a href="" class="header-logo d-flex  justify-content-center align-items-center" style="width: 20vw;">
+                                <a href="" class="header-logo d-flex  justify-content-center align-items-center"
+                                    style="width: 20vw;">
                                     <img src="Img/logo.png" alt="Header Logo" class=" w-50 h-50">
                                 </a>
 
                                 <div class="header-right">
                                     <ul>
                                         <li>
-                                            <a href="#exampleModal" class="search-btn bt" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <a href="#exampleModal" class="search-btn bt" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                                 <i class="pe-7s-search"></i>
                                             </a>
                                         </li>
@@ -194,7 +200,8 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
                                         <li class="minicart-wrap me-3 me-lg-0">
                                             <a href="#miniCart" class="minicart-btn toolbar-btn">
                                                 <i class="pe-7s-shopbag"></i>
-                                                <span class="quantity"><?= $count; ?></span>
+                                                <span
+                                                    class="quantity"><?= $count; ?></span>
                                             </a>
                                         </li>
                                         <li class="mobile-menu_wrap d-block d-lg-none">
@@ -240,6 +247,9 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
 
                                         <li>
                                             <a href="contact.php">Contact Us</a>
+                                        </li>
+                                        <li>
+                                            <a href="aboutus.php">About </a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -289,6 +299,9 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
                                             <li>
                                                 <a href="contact.php">Contact Us</a>
                                             </li>
+                                            <li>
+                                                <a href="aboutus.php">About </a>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -297,7 +310,8 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
                                 <div class="header-right">
                                     <ul>
                                         <li>
-                                            <a href="#exampleModal" class="search-btn bt" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <a href="#exampleModal" class="search-btn bt" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                                 <i class="pe-7s-search"></i>
                                             </a>
                                         </li>
@@ -306,7 +320,8 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
                                         <li class="minicart-wrap me-3 me-lg-0">
                                             <a href="#miniCart" class="minicart-btn toolbar-btn">
                                                 <i class="pe-7s-shopbag"></i>
-                                                <span class="quantity"><?= $count; ?></span>
+                                                <span
+                                                    class="quantity"><?= $count; ?></span>
                                             </a>
                                         </li>
                                         <li class="mobile-menu_wrap d-block d-lg-none">
@@ -370,7 +385,9 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
                 <div class="modal-dialog modal-fullscreen">
                     <div class="modal-content modal-bg-dark">
                         <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-tippy="Close" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                data-tippy="Close" data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                             </button>
                         </div>
                         <div class="modal-body">
@@ -393,95 +410,121 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
                     <div class="minicart-content">
                         <div class="minicart-heading">
                             <h4 class="mb-0">Shopping Cart</h4>
-                            <a href="#" class="button-close"><i class="pe-7s-close" data-tippy="Close" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"></i></a>
+                            <a href="#" class="button-close"><i class="pe-7s-close" data-tippy="Close"
+                                    data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50"
+                                    data-tippy-arrow="true" data-tippy-theme="sharpborder"></i></a>
                         </div>
                         <ul class="minicart-list">
                             <?php
                             $amount = 0;
-                            $query = "SELECT * FROM add_cart";
-                            $result = mysqli_query($conn, $query);
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $id = $row["cart_id"];
-                                if ($row["item_type"] == "beat") {
-                                    $query1 = "SELECT * FROM add_beat WHERE beat_id='$id'";
+$query = "SELECT * FROM add_cart";
+$result = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_assoc($result)) {
+    $id = $row["cart_id"];
+    if ($row["item_type"] == "beat") {
+        $query1 = "SELECT * FROM add_beat WHERE beat_id='$id'";
 
-                                    $result1 = mysqli_query($conn, $query1);
-                                    $row1 = mysqli_fetch_assoc($result1);
-                                    $id = $row1["beat_id"];
-                                    $type = "beat";
-                                    $image = $row1["beat_image"];
-                                    $category = $row1["beat_category"];
-                                    $file = $row1["beat_basic_file"];
-                                    $discount = $row1["discount"];
-                                } else if ($row["item_type"] == "sample") {
-                                    $query1 = "SELECT * FROM add_sample WHERE sample_id='$id'";
+        $result1 = mysqli_query($conn, $query1);
+        $row1 = mysqli_fetch_assoc($result1);
+        $id = $row1["beat_id"];
+        $type = "beat";
+        $image = $row1["beat_image"];
+        $category = $row1["beat_category"];
+        $file = $row1["beat_basic_file"];
+        $discount = $row1["discount"];
+    } elseif ($row["item_type"] == "sample") {
+        $query1 = "SELECT * FROM add_sample WHERE sample_id='$id'";
 
-                                    $result1 = mysqli_query($conn, $query1);
-                                    $row1 = mysqli_fetch_assoc($result1);
-                                    $id = $row1["sample_id"];
-                                    $type = "sample";
-                                    $image = $row1["sample_image"];
-                                    $category = $row1["sample_category"];
-                                    $file = $row1["sample_file"];
-                                    $discount = $row1["discount"];
-                                } else if ($row["item_type"] == "lyrics") {
+        $result1 = mysqli_query($conn, $query1);
+        $row1 = mysqli_fetch_assoc($result1);
+        $id = $row1["sample_id"];
+        $type = "sample";
+        $image = $row1["sample_image"];
+        $category = $row1["sample_category"];
+        $file = $row1["sample_file"];
+        $discount = $row1["discount"];
+    } elseif ($row["item_type"] == "lyrics") {
+        $query1 = "SELECT * FROM add_lyrics WHERE lyrics_id='$id'";
+        $result1 = mysqli_query($conn, $query1);
+        $row1 = mysqli_fetch_assoc($result1);
+        $id = $row1["lyrics_id"];
+        $type = "lyrics";
+        $image = $row1["lyrics_image"];
+        $category = $row1["lyrics_category"];
+        $file = $row1["lyrics_file"];
+        $discount = $row1["discount"];
+    } elseif ($row["item_type"] == "song") {
+        $query1 = "SELECT * FROM add_song WHERE song_id='$id'";
+        $result1 = mysqli_query($conn, $query1);
+        $row1 = mysqli_fetch_assoc($result1);
+        $id = $row1["song_id"];
+        $type = "song";
+        $image = $row1["song_image"];
+        $category = $row1["song_category"];
+        $file = $row1["song_preview"];
+        $discount = $row1["discount"];
+    }
 
-                                    $query1 = "SELECT * FROM add_lyrics WHERE lyrics_id='$id'";
-                                    $result1 = mysqli_query($conn, $query1);
-                                    $row1 = mysqli_fetch_assoc($result1);
-                                    $id = $row1["lyrics_id"];
-                                    $type = "lyrics";
-                                    $image = $row1["lyrics_image"];
-                                    $category = $row1["lyrics_category"];
-                                    $file = $row1["lyrics_file"];
-                                    $discount = $row1["discount"];
-                                } else if ($row["item_type"] == "song") {
-                                    $query1 = "SELECT * FROM add_song WHERE song_id='$id'";
-                                    $result1 = mysqli_query($conn, $query1);
-                                    $row1 = mysqli_fetch_assoc($result1);
-                                    $id = $row1["song_id"];
-                                    $type = "song";
-                                    $image = $row1["song_image"];
-                                    $category = $row1["song_category"];
-                                    $file = $row1["song_preview"];
-                                    $discount = $row1["discount"];
-                                }
-
-                                $name = $row["item_name"];
-                                $price = $row["item_amount"];
-                            ?>
-                                <li class="minicart-product new" id="li_<?= $row['cart_id']; ?>" data-type="<?= $row['item_type']; ?>">
-                                    <a class="product-item_remove"><i class="pe-7s-close" data-tippy="Remove" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"></i></a>
-                                    <div data-bs-target=#quickModal data-bs-toggle=modal style='width:100%;' class=d-flex>
-                                        <a class="product-item_img" style='height:60px;'>
-                                            <img class="img-full" src="admin/Files/<?= $row['item_type']; ?>/<?= $row['item_image']; ?>" alt="Product Image" style='height:100%;'>
-                                        </a>
-
-                                        <div class="product-item_content">
-                                            <a class="product-item_title"><?= $row['item_name']; ?></a>
-                                            <span class="product-item_quantity" id='product_item'>$<span><?= $row['item_amount']; ?></span></span>
-                                            <span class="product-item_lease" style='font-size:14px;'><?= $row['item_lease_type']; ?></span>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <div class="product-item d-none" data-type="<?= $row['item_type']; ?>" data-id="<?= $id; ?>">
-                                    <a data-tippy="Play" data-id="<?= $id; ?>" class="play" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                        <i class="entypo-icon-controller-play"></i>
+    $name = $row["item_name"];
+    $price = $row["item_amount"];
+    ?>
+                            <li class="minicart-product new"
+                                id="li_<?= $row['cart_id']; ?>"
+                                data-type="<?= $row['item_type']; ?>">
+                                <a class="product-item_remove"><i class="pe-7s-close" data-tippy="Remove"
+                                        data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true"
+                                        data-tippy-theme="sharpborder"></i></a>
+                                <div data-bs-target=#quickModal data-bs-toggle=modal style='width:100%;' class=d-flex>
+                                    <a class="product-item_img" style='height:60px;'>
+                                        <img class="img-full"
+                                            src="admin/Files/<?= $row['item_type']; ?>/<?= $row['item_image']; ?>"
+                                            alt="Product Image" style='height:100%;'>
                                     </a>
-                                    <div class="product-item d-none" data-type="<?= $type; ?>" data-id="<?= $id; ?>">
-                                        <a class="add-to-cart" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder" data-name="<?= $name; ?>" data-type="<?= $type; ?>" data-image="<?= $image; ?>?>" data-price="<?= $price; ?>" data-id="<?= $id; ?>">
 
-                                            <i class="pe-7s-cart cart-list-active"></i>
-                                        </a>
-                                        <audio src="./admin/Files/<?= $type; ?>/<?= $file; ?>" loop></audio>
+                                    <div class="product-item_content">
+                                        <a
+                                            class="product-item_title"><?= $row['item_name']; ?></a>
+                                        <span class="product-item_quantity"
+                                            id='product_item'>$<span><?= $row['item_amount']; ?></span></span>
+                                        <span class="product-item_lease"
+                                            style='font-size:14px;'><?= $row['item_lease_type']; ?></span>
                                     </div>
-
                                 </div>
+                            </li>
+
+                            <div class="product-item d-none"
+                                data-type="<?= $row['item_type']; ?>"
+                                data-id="<?= $id; ?>">
+                                <a data-tippy="Play"
+                                    data-id="<?= $id; ?>"
+                                    class="play" data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                    data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                    <i class="entypo-icon-controller-play"></i>
+                                </a>
+                                <div class="product-item d-none"
+                                    data-type="<?= $type; ?>"
+                                    data-id="<?= $id; ?>">
+                                    <a class="add-to-cart" data-tippy="Add to cart" data-tippy-inertia="true"
+                                        data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                        data-tippy-theme="sharpborder"
+                                        data-name="<?= $name; ?>"
+                                        data-type="<?= $type; ?>"
+                                        data-image="<?= $image; ?>?>"
+                                        data-price="<?= $price; ?>"
+                                        data-id="<?= $id; ?>">
+
+                                        <i class="pe-7s-cart cart-list-active"></i>
+                                    </a>
+                                    <audio
+                                        src="./admin/Files/<?= $type; ?>/<?= $file; ?>"
+                                        loop></audio>
+                                </div>
+
+                            </div>
                             <?php
-                                $amount += $row['item_amount'];
-                            }
-                            ?>
+        $amount += $row['item_amount'];
+}
+?>
 
                         </ul>
                     </div>
@@ -491,7 +534,8 @@ if ($title != "Thank You" && $title != "Contact Us" && $title != "Download page"
 
                     <div class="minicart-item_total">
                         <span>Subtotal</span>
-                        <span class="ammount">$<span class="amount"><?= number_format($amount, 2); ?></span></span>
+                        <span class="ammount">$<span
+                                class="amount"><?= number_format($amount, 2); ?></span></span>
                     </div>
 
                     <div class="group-btn_wrap d-grid gap-2">

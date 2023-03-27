@@ -1,7 +1,7 @@
 <?php
+
 require_once("./admin/db/config.php");
 if (isset($_POST["place_order"])) {
-
     $POST = filter_var_array($_POST, FILTER_SANITIZE_STRING);
     extract($POST);
     $query = "SELECT * FROM add_user WHERE user_id='$user'";
@@ -49,11 +49,11 @@ function makePayment($conn)
     $row = mysqli_fetch_assoc($result);
     $email = $row["email"];
     $toNaira = $amount * 500;
-    $secretKey = "sk_test_8921bdf70a7db5582dce86789a916ce6de1fae28";
+    $secretKey = "sk_test_e7e15f5f0c023be901615538c8ce9c8ed163cd24";
 
     if ($payStack) {
         payStack($secretKey, $toNaira, $email);
-    } else if ($payPal) {
+    } elseif ($payPal) {
         echo "oui";
     }
 }
@@ -65,8 +65,8 @@ function payStack($secretKey, $amount, $email)
     $fields = [
         'email' => "$email",
         'amount' => $amount * 100,
-        'subaccount' => "ACCT_s629au56hge7mjl",
-        'bearer' => 'subaccount',
+        'subaccount' => "ACCT_g0c3by2v4ye2ut5",
+        'bearer' => 'account',
         'callback_url' => "http://localhost/alabah/callback.php?email=$email"
     ];
 

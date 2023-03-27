@@ -47,81 +47,80 @@ require_once("./includes/header.php");
                         </div>
                     </div>
                     <form action="checkout_handler.php" method="POST">
-                        <input type="text" value="<?= $user; ?>" name="user" hidden>
+                        <input type="text" value="<?= $user; ?>"
+                            name="user" hidden>
                         <?php
                         $query = "SELECT * FROM add_user WHERE user_id='$user'";
-                        $result = mysqli_query($conn, $query);
-                        $row = mysqli_fetch_assoc($result);
-                        $email = $row["email"];
-                        if ($email == "") {
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$email = $row["email"];
+if ($email == "") {
+    ?>
+                        <div class="checkbox-form">
+                            <h3>Billing Details</h3>
+                            <div class="row">
 
 
-                        ?>
-                            <div class="checkbox-form">
-                                <h3>Billing Details</h3>
-                                <div class="row">
-
-
-                                    <div class="col-md-12">
-                                        <div class="checkout-form-list">
-                                            <label>First Name <span class="text-danger">*</span></label>
-                                            <input placeholder="Enter First Name" name="firstname" type="text" required>
-                                        </div>
-
-                                        <div class="checkout-form-list">
-                                            <label>Last Name <span class="text-danger">*</span></label>
-                                            <input placeholder="Enter Last Name" type="text" name="lastname" required>
-                                        </div>
-
-                                        <div class="checkout-form-list">
-                                            <label>Email <span class="text-danger">*</span></label>
-                                            <input placeholder="Enter Email" type="email" name="email" required>
-                                        </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>First Name <span class="text-danger">*</span></label>
+                                        <input placeholder="Enter First Name" name="firstname" type="text" required>
                                     </div>
 
+                                    <div class="checkout-form-list">
+                                        <label>Last Name <span class="text-danger">*</span></label>
+                                        <input placeholder="Enter Last Name" type="text" name="lastname" required>
+                                    </div>
+
+                                    <div class="checkout-form-list">
+                                        <label>Email <span class="text-danger">*</span></label>
+                                        <input placeholder="Enter Email" type="email" name="email" required>
+                                    </div>
                                 </div>
 
                             </div>
+
+                        </div>
                         <?php
-                        } else {
-                        ?>
-                            <div class="col-12">
-                                <div class="coupon-accordion">
+} else {
+    ?>
+                        <div class="col-12">
+                            <div class="coupon-accordion">
 
-                                    <h3>Do you wish to change your email, for receiving products? <span id="showemail">Click
-                                            here to change your email</span></h3>
-                                    <div id="checkout_email" class="coupon-checkout-content">
-
-
-                                        <div class="checkbox-form">
-
-                                            <div class="row">
+                                <h3>Do you wish to change your email, for receiving products? <span id="showemail">Click
+                                        here to change your email</span></h3>
+                                <div id="checkout_email" class="coupon-checkout-content">
 
 
-                                                <div class="col-md-12">
+                                    <div class="checkbox-form">
+
+                                        <div class="row">
 
 
-                                                    <div class="checkout-form-list">
-                                                        <label>Old Email </label>
-                                                        <input placeholder="Enter Old Email" type="email" name="oldEmail">
-                                                    </div>
+                                            <div class="col-md-12">
 
-                                                    <div class="checkout-form-list">
-                                                        <label>New Email </label>
-                                                        <input placeholder="Enter New Email" type="email" name="newEmail">
-                                                    </div>
+
+                                                <div class="checkout-form-list">
+                                                    <label>Old Email </label>
+                                                    <input placeholder="Enter Old Email" type="email" name="oldEmail">
                                                 </div>
 
+                                                <div class="checkout-form-list">
+                                                    <label>New Email </label>
+                                                    <input placeholder="Enter New Email" type="email" name="newEmail">
+                                                </div>
                                             </div>
 
                                         </div>
 
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
                         <?php
-                        }
-                        ?>
+}
+?>
 
 
                         <div class="your-order">
@@ -137,40 +136,49 @@ require_once("./includes/header.php");
                                     <tbody class="checkout-body">
 
                                         <?php
-                                        $amount = 0;
-                                        $query = "SELECT * FROM add_cart WHERE user_id='$user'";
-                                        $result = mysqli_query($conn, $query);
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                $amount += $row['item_amount'];
-                                        ?>
-                                                <tr class="cart_item" data-id="<?= $row['cart_id']; ?>">
-                                                    <td class="cart-product-name"><?= $row['item_name']; ?></td>
-                                                    <td class="cart-product-total">$<span class="amount"><?= $row['item_amount']; ?></span></td>
-                                                </tr>
+                $amount = 0;
+$query = "SELECT * FROM add_cart WHERE user_id='$user'";
+$result = mysqli_query($conn, $query);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $amount += $row['item_amount'];
+        ?>
+                                        <tr class="cart_item"
+                                            data-id="<?= $row['cart_id']; ?>">
+                                            <td class="cart-product-name">
+                                                <?= $row['item_name']; ?>
+                                            </td>
+                                            <td class="cart-product-total">$<span
+                                                    class="amount"><?= $row['item_amount']; ?></span>
+                                            </td>
+                                        </tr>
                                         <?php
 
-                                            }
-                                        }
-                                        $producerAmount = 0;
-                                        $query1 = "SELECT * FROM add_cart WHERE user_id='$user' AND ";
-                                        $result1 = mysqli_query($conn, $query);
-                                        ?>
+    }
+}
+$producerAmount = 0;
+$query1 = "SELECT * FROM add_cart WHERE user_id='$user' AND ";
+$result1 = mysqli_query($conn, $query);
+?>
 
 
                                     </tbody>
                                     <tfoot class="checkout-total">
                                         <tr class="cart-subtotal">
                                             <th>Cart Subtotal</th>
-                                            <td>$<span class="amount"><?= number_format($amount, 2); ?></span></td>
+                                            <td>$<span
+                                                    class="amount"><?= number_format($amount, 2); ?></span>
+                                            </td>
                                         </tr>
                                         <tr class="order-total">
                                             <th>Order Total</th>
-                                            <td><strong>$<span class="amount"><?= number_format($amount, 2); ?></span></strong>
+                                            <td><strong>$<span
+                                                        class="amount"><?= number_format($amount, 2); ?></span></strong>
                                             </td>
 
                                         </tr>
-                                        <input type="text" class="amount-input" hidden name="amount" value="<?= $amount; ?>">
+                                        <input type="text" class="amount-input" hidden name="amount"
+                                            value="<?= $amount; ?>">
                                         <!-- Having two amount input, one stores amount for producer items, the other stores for song writer -->
 
 
@@ -183,7 +191,8 @@ require_once("./includes/header.php");
                                         <div class="card">
                                             <div class="card-header" id="#payment-1">
                                                 <h5 class="panel-title">
-                                                    <a href="#" class="" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                                                    <a href="#" class="" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapseOne" aria-expanded="true">
                                                         Direct Bank Transfer.
                                                     </a>
                                                 </h5>
@@ -204,14 +213,16 @@ require_once("./includes/header.php");
                                         <div class="card">
                                             <div class="card-header" id="#payment-1">
                                                 <h5 class="panel-title">
-                                                    <a href="#" class="" data-bs-toggle="collapse" data-bs-target="#paymentGateway" aria-expanded="true">
+                                                    <a href="#" class="" data-bs-toggle="collapse"
+                                                        data-bs-target="#paymentGateway" aria-expanded="true">
                                                         Choose Payment Gateway
                                                     </a>
                                                 </h5>
                                             </div>
                                             <div id="paymentGateway" class="collapse " data-bs-parent="#accordion">
                                                 <div class="card-body">
-                                                    <input type="radio" name="paymentgateway[]" checked value="payStack" id=""><span style="margin-left:20px;">Pay Stack</span><br>
+                                                    <input type="radio" name="paymentgateway[]" checked value="payStack"
+                                                        id=""><span style="margin-left:20px;">Pay Stack</span><br>
                                                     <!-- <input type="radio" name="paymentgateway[]" value="payPal" id=""><span style="margin-left:20px;">Pay Pal</span> -->
                                                 </div>
                                             </div>

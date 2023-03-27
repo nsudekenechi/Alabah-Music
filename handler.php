@@ -1,4 +1,5 @@
 <?php
+
 require_once("./admin/db/config.php");
 if (isset($_GET["getinfo"])) {
     $id = $_GET["getinfo"];
@@ -18,7 +19,7 @@ if (isset($_GET["getinfo"])) {
         $exclusiveAmount = $row["beat_exclusive_amount"];
         $premiumAmount = $row["beat_premium_amount"];
         $discount = $row["discount"];
-    } else if ($type == "sample") {
+    } elseif ($type == "sample") {
         $query = "SELECT * FROM add_sample WHERE sample_id='$id'";
         $result = mysqli_query($conn, $query);
 
@@ -33,7 +34,7 @@ if (isset($_GET["getinfo"])) {
         $exclusiveAmount = "";
         $premiumAmount = "";
         $discount = $row["discount"];
-    } else if ($type == "lyrics") {
+    } elseif ($type == "lyrics") {
         $query = "SELECT * FROM add_lyrics WHERE lyrics_id='$id'";
         $result = mysqli_query($conn, $query);
 
@@ -48,7 +49,7 @@ if (isset($_GET["getinfo"])) {
         $exclusiveAmount = $row["lyrics_exclusive_amount"];
         $premiumAmount = $row["lyrics_premium_amount"];
         $discount = $row["discount"];
-    } else if ($type == "song") {
+    } elseif ($type == "song") {
         $query = "SELECT * FROM add_song WHERE song_id='$id'";
         $result = mysqli_query($conn, $query);
 
@@ -94,17 +95,14 @@ if (isset($_GET["removefromcart"])) {
 }
 
 if (isset($_GET["adduser"])) {
-    $user = $_GET["adduser"];
-    $time = strtotime("1 year");
-    setcookie("user", $user, $time, "/");
-    session_start();
-    $_SESSION["user"] = $user;
+    // $user = $_GET["adduser"];
+    // $time = strtotime("1 year");
+    // setcookie("user", $user, $time, "/");
+    // session_start();
+    // $_SESSION["user"] = $user;
 
-    $query = "INSERT INTO `add_user`( `user_id`) VALUES ('$user')";
-    $result = mysqli_query($conn, $query);
-    if ($result) {
-        echo "added";
-    }
+    // $query = "INSERT INTO `add_user`( `user_id`) VALUES ('$user')";
+    // $result = mysqli_query($conn, $query);
 }
 
 if (isset($_GET["changecart"])) {
@@ -134,8 +132,6 @@ if (isset($_GET["coupon_code"])) {
 
 
         if ($isexpired == "False") {
-
-
             if ($count == $maximum || strtotime($date) >= strtotime($expiryDate)) {
                 $query = "UPDATE `add_coupon` SET  `is_expired`='$expired' WHERE coupon_code='$code'";
                 $result = mysqli_query($conn, $query);

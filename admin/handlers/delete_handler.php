@@ -72,4 +72,3 @@ if(isset($_GET["deletecoupon"])){
     $id=$_GET["deletecoupon"];
     deleteHandler($id,$conn,"add_coupon","id","","","","");
 }
-?>
