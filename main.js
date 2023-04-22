@@ -327,11 +327,11 @@ function Free(type, beatFile, beatName) {
         // Getting beat extension
         beatName = beatName + "." + beatFile.split(".")[1]
     } else if (type == "lyrics") {
-        modalItems.leaseinfos = ["Lyrics Free Version", "2000 Max. Sales For Profit", "Producer owns right", "Commercial use", "Non-Exclusive", "Credit - i.e 'Written by boikelly"]
+        modalItems.leaseinfos = ["Lyrics Free Version", "2000 Max. Sales For Profit", "Song writer owns right", "Commercial use", "Non-Exclusive", "Credit - i.e 'Written by PG"]
         // Getting beat extension
         beatName = beatName + "." + beatFile.split(".")[1]
     } else if (type == "song") {
-        modalItems.leaseinfos = ["Song  Free Version", "2000 Max. Sales For Profit", "Producer owns right", "Commercial use", "Non-Exclusive", "Credit - i.e 'Written by boikelly"]
+        modalItems.leaseinfos = ["Song  Free Version", "2000 Max. Sales For Profit", "Song writter owns right", "Commercial use", "Non-Exclusive", "Credit - i.e 'Written by PG"]
         // Getting beat extension
         beatName = beatName + "." + beatFile.split(".")[1]
     }
