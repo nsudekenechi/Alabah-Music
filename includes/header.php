@@ -187,7 +187,7 @@ if ($title != "About us" && $title != "Thank You" && $title != "Contact Us" && $
                                 </a> -->
                                 <a href="" class="header-logo d-flex  justify-content-center align-items-center "
                                     style="width: 100px;height:100px;">
-                                    <img src="Img/logo.jpeg" alt="Header Logo" class=" w-75 h-75"
+                                    <img src="Img/Logo.jpeg" alt="Header Logo" class=" w-75 h-75"
                                         style="object-fit:contain; border-radius: 50%;">
                                 </a>
                                 <div class="header-right">
@@ -269,7 +269,7 @@ if ($title != "About us" && $title != "Thank You" && $title != "Contact Us" && $
 
                                 <a href="" class="header-logo d-flex  justify-content-center align-items-center "
                                     style="width: 100px;height:100px;">
-                                    <img src="Img/logo.jpeg" alt="Header Logo" height="50" width="50"
+                                    <img src="Img/Logo.jpeg" alt="Header Logo" height="50" width="50"
                                         style="object-fit:contain; border-radius: 50%;">
                                 </a>
 

@@ -134,10 +134,10 @@
                          <div class="footer-widget-logo">
                              <a href="" class="header-logo d-flex  justify-content-center align-items-center "
                                  style="width: 100px;height:100px;">
-                                 <img src="Img/logo.jpeg" alt="Header Logo" class=" w-75 h-75"
+                                 <img src="Img/Logo.jpeg" alt="Header Logo" class=" w-75 h-75"
                                      style="object-fit:contain; border-radius: 50%;">
                              </a>
-                         </div> 
+                         </div>
                          <p class="footer-widget-desc">Music reminds us of our past, drives us forward and inspires us
                              to live beyond limits.
                              <br>
