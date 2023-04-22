@@ -1,6 +1,6 @@
 <?php
 
-$mode="dev";
+$mode="online";
 if ($mode=="dev") {
     define('HOST', 'localhost');
     define('USER', 'root');
