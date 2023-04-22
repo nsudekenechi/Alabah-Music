@@ -67,7 +67,7 @@ function payStack($secretKey, $amount, $email)
         'amount' => $amount * 100,
         'subaccount' => "ACCT_g0c3by2v4ye2ut5",
         'bearer' => 'account',
-        'callback_url' => "http://localhost/alabah/callback.php?email=$email"
+        'callback_url' => "https://dopemindstudio.com/callback.php?email=$email"
     ];
 
     $fields_string = http_build_query($fields);

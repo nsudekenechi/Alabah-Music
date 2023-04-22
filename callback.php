@@ -147,7 +147,7 @@ function saveSold($itemname, $user, $amount, $itemtype, $itemLeaseType, $conn, $
 
 function sendEmail($email, $ids, $conn, $image, $userDetails, $reference)
 {
-    $image="http://localhost/admin/Files/".$image[0]["type"]."/".$image[0]["img"];
+    $image="https://dopemindstudio.com/admin/Files/".$image[0]["type"]."/".$image[0]["img"];
     $firstname = explode(" ", $userDetails["fullname"])[0];
 
     $senderemail = "doperecords2016@gmail.com";
@@ -155,7 +155,7 @@ function sendEmail($email, $ids, $conn, $image, $userDetails, $reference)
     $senderFrom = "Dopemind Records";
     $body = file_get_contents("./emailtouser.html");
 
-    $body = str_replace(["{Firstname}", "{Link}", "{Image}"], [$firstname, "https://alabah.com/download.php?reference=$reference"], $body, $image);
+    $body = str_replace(["{Firstname}", "{Link}", "{Image}"], [$firstname, "https://dopemindstudio.com/download.php?reference=$reference"], $body, $image);
     $subject = "You've successfully purchased your items";
 
     $mail = new PHPMailer(true);
