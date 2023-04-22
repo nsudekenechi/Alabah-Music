@@ -2,6 +2,26 @@
 
 $title="About us";
 require("./includes/header.php");
+$team=[
+    [
+        "name"=>"Ubasinachi Ugwu",
+        "position"=>"CEO",
+        "img"=>"PG.jpeg",
+        "socials"=> ["facebook"=>"puffygreen",
+        "twitter"=>"greendfishermen",
+        "instagram"=>"puffygreen247"
+        ]
+    ],
+    [
+        "name"=>"Nsude Kenechi",
+        "position"=>"Music Producer",
+        "img"=>"Alabah.jpg",
+        "socials"=> ["facebook"=>"Nsude Kenechi",
+        "twitter"=>"1alabah",
+        "instagram"=>"only1alabah"
+        ]
+    ],
+]
 ?>
 
 <main class="main-content">
@@ -58,40 +78,50 @@ require("./includes/header.php");
     <div class="team-area section-space-top-100">
         <div class="container">
             <div class="section-title-wrap without-tab">
-                <h2 class="section-title">Our Team</h2>
-                <p class="section-desc">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
-                    in a piece of classical Latin literature
-                </p>
+                <h2 class="section-title">Meet The Team</h2>
+
             </div>
             <div class="row">
+
+                <?php
+            foreach ($team as $item) {
+                ?>
                 <div class="col-lg-3 col-sm-6 pt-sm-5">
                     <div class="team-item">
                         <div class="team-img">
-                            <img src="assets/images/about/team/1-1-270x270.png" alt="Team Member">
+                            <img src="./Img/<?=$item["img"];?>"
+                                alt="Ugwu Ubasinachi" style="border-radius:10px;">
                             <div class="inner-content">
-                                <h2 class="team-member-name">Ugwu Ubasinachi</h2>
-                                <span class="occupation">CEO</span>
+                                <h2 class="team-member-name">
+                                    <?=$item["name"];?>
+
+                                </h2>
+                                <span
+                                    class="occupation"><?=$item["position"];?></span>
                                 <div class="social-link with-border">
                                     <ul>
                                         <li>
-                                            <a href="#" data-tippy="Facebook" data-tippy-inertia="true"
+                                            <a href="https://www.facebook.com/<?=$item["socials"]["facebook"];?>"
+                                                data-tippy="Facebook" data-tippy-inertia="true"
                                                 data-tippy-animation="shift-away" data-tippy-delay="50"
-                                                data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                data-tippy-arrow="true" data-tippy-theme="sharpborder" target="_blank">
                                                 <i class="fa fa-facebook"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" data-tippy="Twitter" data-tippy-inertia="true"
+                                            <a href="https://www.twitter.com/<?=$item["socials"]["twitter"];?>"
+                                                data-tippy="Twitter" data-tippy-inertia="true"
                                                 data-tippy-animation="shift-away" data-tippy-delay="50"
-                                                data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                data-tippy-arrow="true" data-tippy-theme="sharpborder" target="_blank">
                                                 <i class="fa fa-twitter"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" data-tippy="Pinterest" data-tippy-inertia="true"
+                                            <a href="https://www.instagram.com/<?=$item["socials"]["instagram"];?>"
+                                                data-tippy="Instagram" data-tippy-inertia="true"
                                                 data-tippy-animation="shift-away" data-tippy-delay="50"
-                                                data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                <i class="fa fa-pinterest"></i>
+                                                data-tippy-arrow="true" data-tippy-theme="sharpborder" target="_blank">
+                                                <i class="fa fa-instagram"></i>
                                             </a>
                                         </li>
                                     </ul>
@@ -99,10 +129,19 @@ require("./includes/header.php");
                             </div>
                         </div>
                         <div class="team-content">
-                            <h2 class="team-member-name mb-0">Ugwu Ubasinachi</h2>
+                            <h2 class="team-member-name mb-0">
+                                <?=$item["name"];?>
+                            </h2>
                         </div>
                     </div>
+
                 </div>
+                <?php
+            }
+?>
+
+
+
 
             </div>
         </div>
@@ -112,5 +151,5 @@ require("./includes/header.php");
 </main>
 
 <?php
-            require("./includes/footer.php");
+require("./includes/footer.php");
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-$mode="pro";
+$mode="dev";
 if ($mode=="dev") {
     define('HOST', 'localhost');
     define('USER', 'root');

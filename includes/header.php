@@ -181,11 +181,15 @@ if ($title != "About us" && $title != "Thank You" && $title != "Contact Us" && $
                                     <a href="tel://+2348036328814">+234 803 6328 814</a>
                                 </div>
 
-                                <a href="" class="header-logo d-flex  justify-content-center align-items-center"
+                                <!-- <a href="" class="header-logo d-flex  justify-content-center align-items-center"
                                     style="width: 20vw;">
                                     <img src="Img/logo.png" alt="Header Logo" class=" w-50 h-50">
+                                </a> -->
+                                <a href="" class="header-logo d-flex  justify-content-center align-items-center "
+                                    style="width: 100px;height:100px;">
+                                    <img src="Img/logo.jpeg" alt="Header Logo" class=" w-75 h-75"
+                                        style="object-fit:contain; border-radius: 50%;">
                                 </a>
-
                                 <div class="header-right">
                                     <ul>
                                         <li>
@@ -263,8 +267,10 @@ if ($title != "About us" && $title != "Thank You" && $title != "Contact Us" && $
                         <div class="row align-items-center justify-content-center">
                             <div class="col-lg-3  col-6">
 
-                                <a href="" class="header-logo">
-                                    <img src="Img/logo.png" alt="Header Logo" height="70" width="70">
+                                <a href="" class="header-logo d-flex  justify-content-center align-items-center "
+                                    style="width: 100px;height:100px;">
+                                    <img src="Img/logo.jpeg" alt="Header Logo" height="50" width="50"
+                                        style="object-fit:contain; border-radius: 50%;">
                                 </a>
 
                             </div>

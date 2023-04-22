@@ -132,12 +132,12 @@
                  <div class="col-lg-6">
                      <div class="footer-widget-item col-lg-6">
                          <div class="footer-widget-logo">
-                             <a href="./index.php">
-                                 <img src="./Img/logo.png" width="100" alt="Logo">
-
-                                 <!-- <img src="assets/images/logo/dark.png" alt="Logo"> -->
+                             <a href="" class="header-logo d-flex  justify-content-center align-items-center "
+                                 style="width: 100px;height:100px;">
+                                 <img src="Img/logo.jpeg" alt="Header Logo" class=" w-75 h-75"
+                                     style="object-fit:contain; border-radius: 50%;">
                              </a>
-                         </div>
+                         </div> 
                          <p class="footer-widget-desc">Music reminds us of our past, drives us forward and inspires us
                              to live beyond limits.
                              <br>
@@ -148,30 +148,34 @@
                          <div class="social-link with-border">
                              <ul>
                                  <li>
-                                     <a href="#" data-tippy="Facebook" data-tippy-inertia="true"
+                                     <a href="https://www.facebook.com/profile.php?id=100090172167531&mibextid=ZbWKwL"
+                                         data-tippy="Facebook" data-tippy-inertia="true"
                                          data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                         data-tippy-theme="sharpborder">
+                                         data-tippy-theme="sharpborder" target="_blank">
                                          <i class="fa fa-facebook"></i>
                                      </a>
                                  </li>
                                  <li>
-                                     <a href="#" data-tippy="Twitter" data-tippy-inertia="true"
-                                         data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                         data-tippy-theme="sharpborder">
+                                     <a href="https://twitter.com/Dopemindrecords" data-tippy="Twitter"
+                                         data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                         data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
+                                         target="_blank">
                                          <i class="fa fa-twitter"></i>
                                      </a>
                                  </li>
                                  <li>
-                                     <a href="#" data-tippy="Whatsapp" data-tippy-inertia="true"
-                                         data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                         data-tippy-theme="sharpborder">
+                                     <a href="https://wa.me/+2349078626586" data-tippy="Whatsapp"
+                                         data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                         data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
+                                         target="_blank">
                                          <i class="fa fa-whatsapp"></i>
                                      </a>
                                  </li>
                                  <li>
-                                     <a href="#" data-tippy="Instagram" data-tippy-inertia="true"
-                                         data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                         data-tippy-theme="sharpborder">
+                                     <a href="https://www.instagram.com/dopemindstudios/" data-tippy="Instagram"
+                                         data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                         data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
+                                         target="_blank">
                                          <i class="fa fa-instagram"></i>
                                      </a>
                                  </li>
