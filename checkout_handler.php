@@ -49,7 +49,7 @@ function makePayment($conn)
     $row = mysqli_fetch_assoc($result);
     $email = $row["email"];
     $toNaira = $amount * 500;
-    $secretKey = "sk_test_e7e15f5f0c023be901615538c8ce9c8ed163cd24";
+    $secretKey = "sk_live_41f743b9d0e5e96a84ef296e5e874e0b086cacdc";
 
     if ($payStack) {
         payStack($secretKey, $toNaira, $email);
@@ -61,11 +61,12 @@ function makePayment($conn)
 function payStack($secretKey, $amount, $email)
 {
     $url = "https://api.paystack.co/transaction/initialize";
+    echo $amount;
 
     $fields = [
         'email' => "$email",
         'amount' => $amount * 100,
-        'subaccount' => "ACCT_g0c3by2v4ye2ut5",
+        'subaccount' => "ACCT_536p2y56d3ox52o",
         'bearer' => 'account',
         'callback_url' => "https://dopemindstudio.com/callback.php?email=$email"
     ];
@@ -91,6 +92,7 @@ function payStack($secretKey, $amount, $email)
     $result = curl_exec($ch);
     $data = json_decode($result);
     if ($data) {
+        // print_r($data);
         header("Location:" . $data->data->authorization_url);
     }
 }

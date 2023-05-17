@@ -194,11 +194,14 @@ beatItems.beatCategorys[0].forEach((beatCategory, index) => {
 })
 
 function PlayBeat(playIcon, modal, state) {
+
     let audio = document.querySelector(`.product-item[data-id='${playIcon.dataset.id}'] audio`)
     if (playIcon.children[0].classList == "entypo-icon-controller-play") {
         let playing = document.querySelector("audio.playing")
 
         audio.play();
+
+
         document.querySelectorAll(`.play[data-id='${playIcon.dataset.id}']`).forEach(play => {
             play.children[0].classList.replace("entypo-icon-controller-play", "entypo-icon-controller-stop")
         })
@@ -243,7 +246,18 @@ function PlayBeat(playIcon, modal, state) {
 
 
     }
+    audio.currentTime = 30
 
+    audio.onplaying = (e) => {
+        let limitedTime = setInterval(() => {
+            // Replaying Song After 40 Seconds
+            if (Math.floor(audio.currentTime) == 40) {
+                audio.load();
+                audio.play();
+                clearInterval(limitedTime)
+            }
+        }, 1000)
+    }
 
 }
 

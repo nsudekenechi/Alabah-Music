@@ -102,6 +102,7 @@ if ($title != "About us" && $title != "Thank You" && $title != "Contact Us" && $
     <meta name="robots" content="index, follow" />
     <meta name="description" content="Dope">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="AlabaTek" />
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="Img/logo.png" />
 

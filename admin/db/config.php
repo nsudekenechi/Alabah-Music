@@ -1,7 +1,7 @@
 <?php
 
-$mode="online";
-if ($mode=="dev") {
+$mode="local";
+if ($mode=="local") {
     define('HOST', 'localhost');
     define('USER', 'root');
     define('PASSWORD', '');
