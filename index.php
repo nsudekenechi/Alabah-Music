@@ -77,7 +77,7 @@ $songWriteUp = writeUp($writeUps["song"]);
                                     <div class="scene fill">
                                         <div class="expand-width" data-depth="0.2">
 
-                                            <img src="./admin/Files/beat/<?= $beatImages; ?>"
+                                            <img src="./img/beatBg.jpg"
                                                 alt="Inner Image" style="object-fit:cover;width:100%;height:500px;">
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@ $songWriteUp = writeUp($writeUps["song"]);
                                     <div class="scene fill">
                                         <div class="expand-width" data-depth="0.2">
 
-                                            <img src="./admin/Files/sample/<?= $sampleImages; ?>"
+                                            <img src="./img/sample.jpg"
                                                 alt="Inner Image" style="object-fit:cover;width:100%;height:500px;">
                                         </div>
                                     </div>
@@ -141,7 +141,7 @@ $songWriteUp = writeUp($writeUps["song"]);
                                     <div class="scene fill">
                                         <div class="expand-width" data-depth="0.2">
 
-                                            <img src="./admin/Files/lyrics/<?= $lyricsImages; ?>"
+                                            <img src="./img/lyrics.jpg"
                                                 alt="Inner Image" style="object-fit:cover;width:100%;height:500px;">
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@ $songWriteUp = writeUp($writeUps["song"]);
                                     <div class="scene fill">
                                         <div class="expand-width" data-depth="0.2">
 
-                                            <img src="./admin/Files/song/<?= $songImages; ?>"
+                                            <img src="./img/song.jpg"
                                                 alt="Inner Image" style="object-fit:cover;width:100%;height:500px;">
                                         </div>
                                     </div>
