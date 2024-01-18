@@ -82,33 +82,10 @@ const modalLeaseInfos = {
 
 let name, beatPrice, beatImage, leaseType, id, userId, cartIcon, productItem, productType;
 
-// if (!localStorage.getItem("user")) {
-//     let rand = Math.floor(Math.random() * 1000);
-//     userId = localStorage.setItem("user", "user" + rand);
-//     userId = localStorage.getItem("user");
-
-// } else {
-//     userId = localStorage.getItem("user");
-
-// }
 
 userId = document.querySelector("#user").value;
 
-//Playing Multiple beat items
-playIcons.beat.forEach((playIcon, index) => {
-    playIcon.addEventListener("click", () => {
-        PlayBeat(playIcon, playIcons.modal, true)
 
-
-    })
-})
-
-
-//Playing Single beat item(Modal)
-playIcons.modal.onclick = function () {
-
-    PlayBeat(indexes.playingAudio, playIcons.modal, false);
-}
 
 
 
@@ -180,6 +157,22 @@ cartItems.cartIcons2.forEach(carticon => {
     }
 })
 
+
+//Playing Multiple beat items
+playIcons.beat.forEach((playIcon, index) => {
+    playIcon.addEventListener("click", () => {
+        PlayBeat(playIcon, playIcons.modal, true)
+
+
+    })
+})
+
+
+//Playing Single beat item(Modal)
+playIcons.modal.onclick = function () {
+
+    PlayBeat(indexes.playingAudio, playIcons.modal, false);
+}
 
 //Clicking multiple beat Items
 beatItems.beatCategorys[0].forEach((beatCategory, index) => {

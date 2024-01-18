@@ -514,7 +514,7 @@ if ($title != "About us" && $title != "Thank You" && $title != "Contact Us" && $
 
                                 </div>
                                 <?php
-                                $amount += $row['item_amount'];
+                                $amount += intval($row['item_amount']);
                             }
                             ?>
 

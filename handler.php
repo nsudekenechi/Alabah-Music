@@ -103,16 +103,7 @@ if (isset($_GET["removefromcart"])) {
     $result = mysqli_query($conn, $query);
 }
 
-if (isset($_GET["adduser"])) {
-    // $user = $_GET["adduser"];
-    // $time = strtotime("1 year");
-    // setcookie("user", $user, $time, "/");
-    // session_start();
-    // $_SESSION["user"] = $user;
 
-    // $query = "INSERT INTO `add_user`( `user_id`) VALUES ('$user')";
-    // $result = mysqli_query($conn, $query);
-}
 
 if (isset($_GET["changecart"])) {
     $changeCart = json_decode($_GET["changecart"], true);
