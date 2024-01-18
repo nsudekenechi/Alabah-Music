@@ -1,6 +1,6 @@
 <?php
 
-$mode = "on";
+$mode = "local";
 if ($mode == "local") {
     define('HOST', 'localhost');
     define('USER', 'root');

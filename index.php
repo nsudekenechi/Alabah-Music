@@ -2,11 +2,11 @@
 // Returning Every discount expiry to true, once its their expiry date
 $title = "Home";
 require_once("./includes/header.php");
-require_once ( __DIR__ . '/vendor/autoload.php');
-use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-echo $_ENV['PAYSTACK_SK'];
+// require_once ( __DIR__ . '/vendor/autoload.php');
+// // use Dotenv\Dotenv;
+// // $dotenv = Dotenv::createImmutable(__DIR__);
+// // $dotenv->load();
+// // echo $_ENV['PAYSTACK_SK'];
 $start = 0;
 $end = 5;
 $selector = "";

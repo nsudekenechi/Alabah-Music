@@ -3,9 +3,9 @@
 require_once("./admin/db/config.php");
 // Using dotenv
 require_once ( __DIR__ . '/vendor/autoload.php');
-use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// use Dotenv\Dotenv;
+// $dotenv = Dotenv::createImmutable(__DIR__);
+// $dotenv->load();
 if (isset($_POST["place_order"])) {
     $POST = filter_var_array($_POST, FILTER_SANITIZE_STRING);
     extract($POST);
@@ -46,7 +46,8 @@ function makePayment($conn)
     $row = mysqli_fetch_assoc($result);
     $email = $row["email"];
     $toNaira = $amount * 500;
-    $secretKey = $_ENV["PAYSTACK_SK"];
+    // $secretKey = $_ENV["PAYSTACK_SK"];
+    $secretKey = "sk_live_41f743b9d0e5e96a84ef296e5e874e0b086cacdc";
 
     if ($payStack) {
         payStack($secretKey, $toNaira, $email);
