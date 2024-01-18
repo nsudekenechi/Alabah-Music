@@ -260,7 +260,7 @@ if ($title != "About us" && $title != "Thank You" && $title != "Contact Us" && $
                             <div class="col-lg-3  col-6">
 
                                 <a href="" class="header-logo d-flex  justify-content-center align-items-center "
-                                    style="width: 100px;height:100px;">
+                                    style="">
                                     <img src="Img/Logo.jpeg" alt="Header Logo" height="50" width="50"
                                         style="object-fit:contain; border-radius: 50%;">
                                 </a>

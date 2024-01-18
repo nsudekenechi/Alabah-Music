@@ -1,5 +1,3 @@
-
-
 <?php
     if(isset($_GET["email"])){
        if($_GET["email"]=="sent"){
