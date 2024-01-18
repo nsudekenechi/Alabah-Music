@@ -7,25 +7,7 @@ $end = 5;
 $selector = "";
 $query1 = "SELECT * FROM add_cart WHERE user_id='$user'";
 $result1 = mysqli_query($conn, $query1);
-$beatImages = randomImage($conn, "beat_image", "add_beat");
-$sampleImages = randomImage($conn, "sample_image", "add_sample");
-$lyricsImages = randomImage($conn, "lyrics_image", "add_lyrics");
-$songImages = randomImage($conn, "song_image", "add_song");
-function randomImage($conn, $column, $table)
-{
-    $arr = [];
-    $query = "SELECT $column FROM $table";
-    $result = mysqli_query($conn, $query);
-    if (mysqli_num_rows($result)>0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            array_push($arr, $row["$column"]);
-        }
-        $random = rand(0, count($arr) - 1);
-        return $arr[$random];
-    } else {
-        return "";
-    }
-}
+
 $writeUps = [
     "beat" => ["The Perfect Blend of sounds that makes you feel alive"],
     "sample" => ["We've Got the perfect snare just for you"],
@@ -77,7 +59,7 @@ $songWriteUp = writeUp($writeUps["song"]);
                                     <div class="scene fill">
                                         <div class="expand-width" data-depth="0.2">
 
-                                            <img src="./img/beatBg.jpg"
+                                            <img src="./Img/beatBg.jpg"
                                                 alt="Inner Image" style="object-fit:cover;width:100%;height:500px;">
                                         </div>
                                     </div>
@@ -109,7 +91,7 @@ $songWriteUp = writeUp($writeUps["song"]);
                                     <div class="scene fill">
                                         <div class="expand-width" data-depth="0.2">
 
-                                            <img src="./img/sample.jpg"
+                                            <img src="./Img/sample.jpg"
                                                 alt="Inner Image" style="object-fit:cover;width:100%;height:500px;">
                                         </div>
                                     </div>
@@ -141,7 +123,7 @@ $songWriteUp = writeUp($writeUps["song"]);
                                     <div class="scene fill">
                                         <div class="expand-width" data-depth="0.2">
 
-                                            <img src="./img/lyrics.jpg"
+                                            <img src="./Img/lyrics.jpg"
                                                 alt="Inner Image" style="object-fit:cover;width:100%;height:500px;">
                                         </div>
                                     </div>
@@ -172,7 +154,7 @@ $songWriteUp = writeUp($writeUps["song"]);
                                     <div class="scene fill">
                                         <div class="expand-width" data-depth="0.2">
 
-                                            <img src="./img/song.jpg"
+                                            <img src="./Img/song.jpg"
                                                 alt="Inner Image" style="object-fit:cover;width:100%;height:500px;">
                                         </div>
                                     </div>
