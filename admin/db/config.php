@@ -1,7 +1,7 @@
 <?php
 
-$mode="local";
-if ($mode=="online") {
+$mode = "local";
+if ($mode == "local") {
     define('HOST', 'localhost');
     define('USER', 'root');
     define('PASSWORD', '');
@@ -12,4 +12,4 @@ if ($mode=="online") {
     define('PASSWORD', 'EPfHtFtgyiAH');
     define('DB', 'dopegztz_DB');
 }
-$conn=mysqli_connect(HOST, USER, PASSWORD, DB);
+$conn = mysqli_connect(HOST, USER, PASSWORD, DB);

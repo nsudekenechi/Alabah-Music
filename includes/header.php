@@ -253,7 +253,7 @@ if ($title != "About us" && $title != "Thank You" && $title != "Contact Us" && $
                     </div>
                 </div>
             </div>
-            <div class="header-sticky py-4 py-lg-0">
+            <div class="header-sticky py-2 py-lg-0">
                 <div class="container">
                     <div class="header-nav position-relative">
                         <div class="row align-items-center justify-content-center">
@@ -415,7 +415,8 @@ if ($title != "About us" && $title != "Thank You" && $title != "Contact Us" && $
                         <ul class="minicart-list">
                             <?php
                             $amount = 0;
-                            $query = "SELECT * FROM add_cart";
+                            $query = "SELECT * FROM add_cart WHERE user_id='$user'";
+
                             $result = mysqli_query($conn, $query);
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $id = $row["cart_id"];

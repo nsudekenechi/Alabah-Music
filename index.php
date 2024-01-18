@@ -25,6 +25,7 @@ $sampleWriteUp = writeUp($writeUps["sample"]);
 $lyricsWriteUp = writeUp($writeUps["lyrics"]);
 $songWriteUp = writeUp($writeUps["song"]);
 
+
 ?>
 <style>
     .expand-width img {
