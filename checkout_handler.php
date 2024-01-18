@@ -1,6 +1,11 @@
 <?php
 
 require_once("./admin/db/config.php");
+// Using dotenv
+require_once realpath( __DIR__ . '/vendor/autoload.php');
+use Dotenv\Dotenv;
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 if (isset($_POST["place_order"])) {
     $POST = filter_var_array($_POST, FILTER_SANITIZE_STRING);
     extract($POST);
@@ -15,14 +20,6 @@ if (isset($_POST["place_order"])) {
             $fullname = $firstname . " " . $lastname;
             $query = "UPDATE add_user SET fullname='$fullname', email='$email' WHERE user_id='$user'";
             $result = mysqli_query($conn, $query);
-        } else {
-            // if ($oldEmail != "" && $newEmail != "") {
-            //     $query = "UPDATE add_user SET email='$newEmail' WHERE email='$oldEmail'";
-            //     $result = mysqli_query($conn, $query);
-            //     if (!$result) {
-            //         location("checkout.php", "update", "failed");
-            //     }
-            // }
         }
     } else {
         $fullname = $firstname . " " . $lastname;
@@ -49,7 +46,7 @@ function makePayment($conn)
     $row = mysqli_fetch_assoc($result);
     $email = $row["email"];
     $toNaira = $amount * 500;
-    $secretKey = "sk_live_41f743b9d0e5e96a84ef296e5e874e0b086cacdc";
+    $secretKey = $_ENV["PAYSTACK_SK"];
 
     if ($payStack) {
         payStack($secretKey, $toNaira, $email);
@@ -83,7 +80,8 @@ function payStack($secretKey, $amount, $email)
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         "Authorization: Bearer $secretKey",
         "Cache-Control: no-cache",
-    ));
+    )
+    );
 
     //So that curl_exec returns the contents of the cURL; rather than echoing it
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

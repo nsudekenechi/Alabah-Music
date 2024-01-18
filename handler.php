@@ -72,6 +72,15 @@ if (isset($_GET["getinfo"])) {
 }
 
 if (isset($_GET["addtocart"])) {
+    if ($addtocart["user"] == "") {
+        $user = "user" . rand(0, 1000);
+        $time = strtotime("1 year");
+        setcookie("user", $user, $time, "/");
+        $query = "INSERT INTO `add_user`( `user_id`) VALUES ('$user')";
+        $result = mysqli_query($conn, $query);
+    } else {
+        $user = $addtocart["user"];
+    }
     $addtocart = json_decode($_GET["addtocart"], true);
     $cartId = $addtocart["itemId"];
     $itemName = $addtocart["itemName"];
@@ -79,7 +88,7 @@ if (isset($_GET["addtocart"])) {
     $itemLeaseType = $addtocart["itemLeaseType"];
     $itemImage = $addtocart["itemImage"];
     $itemType = $addtocart["itemType"];
-    $user = $addtocart["user"];
+
 
     $query = "INSERT INTO `add_cart`( `cart_id`, `user_id`, `item_name`, `item_amount`, `item_lease_type`, `item_image`,`item_type`) VALUES ('$cartId','$user','$itemName','$itemPrice','$itemLeaseType','$itemImage','$itemType')";
 
@@ -148,5 +157,5 @@ if (isset($_GET["coupon_code"])) {
     } else {
         $discount = "not found";
     }
-    echo  $discount;
+    echo $discount;
 }
